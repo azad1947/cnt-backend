@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
         .then(async (user) => {
             if (user) {
                     if(!user.verified){
-                        return res.status(403).send('wrong password');
+                        return res.send('wrong password');
                     }
                      await bcrypt.compare(password, user.password)
                     .then(async (passwordMatched) => {

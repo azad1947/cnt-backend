@@ -11,6 +11,7 @@ const verify = require('./routes/verify');
 const login = require('./routes/login');
 const resendcode = require('./routes/sendVerificationCode');
 const checkToken = require('./middleware/checkToken');
+const updatepassword = require('./routes/updatePassword');
 
 connection();
 app.use(bodyParser.json());
@@ -20,5 +21,5 @@ app.use('/signup', newUser);
 app.use('/verify', verify);
 app.use('/login', login);
 app.use('/resendcode', resendcode);
-
+app.use('/updatepassword', updatepassword);
 app.listen(3000, () => log(chalk.magenta(`app is running at port 3000.`)));
