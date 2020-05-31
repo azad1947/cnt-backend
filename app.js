@@ -21,5 +21,5 @@ app.use('/signup', newUser);
 app.use('/verify', verify);
 app.use('/login', login);
 app.use('/resendcode', resendcode);
-app.use('/updatepassword', updatepassword);
+app.use('/updatepassword',checkToken, updatepassword);
 app.listen(3000, () => log(chalk.magenta(`app is running at port 3000.`)));

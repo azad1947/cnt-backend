@@ -1,6 +1,10 @@
+const chalk = require('chalk');
+log = console.log;
+
 module.exports = (req, res, next) => {
-    console.log('req.headers--->', req.headers);
-    console.log('ip,host--->', req.ip, req.host);
+    log(chalk.blueBright(`req.headers.auth_token: `)+chalk.magenta(req.headers.auth_token));
+    log(chalk.red(`ip--->${req.ip}`));
+    log(chalk.red(`hostname--->${req.hostname}`));
     const header = req.headers['auth_token'];
     if (typeof header !== 'undefined') {
         const bearer = header.split(' ');
@@ -8,6 +12,7 @@ module.exports = (req, res, next) => {
         req.token = token;
         next();
     } else {
+        console.log(chalk.red(`auth_token not found in headers.`))
         res.sendStatus(403)
     }
 }

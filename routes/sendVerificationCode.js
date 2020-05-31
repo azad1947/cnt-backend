@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
                         return res.send(err);
                     })
             } else {
-                log(chalk.red('warning: ') + chalk.magenta(`no account with this phone.`))
+                log(chalk.red('warning: ') + chalk.magenta(`no account with this phone ${phone}`))
                 return res.send('no account with this phone')
             }
         })
